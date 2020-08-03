@@ -13,8 +13,8 @@ function displayData(data) {
                     <div class="card-body">
                         <h5 class="card-title">${d.name}</h5>
                         <ul>
-                            <li>Species : ${d.species}</li>
-                            <li>House : ${d.house}</li>
+                            <li><b>Species</b> : ${d.species}</li>
+                            <li><b>House</b> : ${d.house}</li>
                         </ul>
                         <button class="btn btn-info more-detail-btn" data-toggle="modal" data-target="#moreDetailCard" data-id="${d.name}">More Detail</button>
                     </div>
@@ -23,7 +23,11 @@ function displayData(data) {
     )
     .join("");
   const cardContainer = document.querySelector(".card-container");
-  cardContainer.innerHTML = getAllData;
+  if (getAllData.length == 0) {
+    cardContainer.innerHTML = "Not Found";
+  } else {
+    cardContainer.innerHTML = getAllData;
+  }
 }
 
 window.addEventListener("load", async function () {
