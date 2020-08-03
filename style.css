@@ -8,6 +8,11 @@
   padding-bottom: 100px;
 }
 
+.keyword-input,
+.input-btn {
+  box-shadow: none !important;
+}
+
 .characterCard {
   animation: fadein 1s ease-in-out;
 }
