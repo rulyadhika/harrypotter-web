@@ -1,5 +1,5 @@
 function reqData() {
-  return fetch("http://hp-api.herokuapp.com/api/characters")
+  return fetch("https://hp-api.herokuapp.com/api/characters")
     .then((result) => result.json())
     .then((result) => result);
 }
