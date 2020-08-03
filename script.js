@@ -28,16 +28,33 @@ window.addEventListener("load", async function () {
   displayData(data);
 
   // adding filter search feature
+  const keywordInput = document.querySelector(".keyword-input");
+  keywordInput.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+      showFilteredData(data);
+    } else if (e.keyCode === 8 || e.keyCode === 46) {
+      setTimeout(() => {
+        if (this.value.length === 0) {
+          displayData(data);
+        }
+      }, 100);
+    }
+  });
+
   const inputBtn = document.querySelector(".input-btn");
   inputBtn.addEventListener("click", function () {
-    const keywordInput = document.querySelector(".keyword-input");
-    let getFilteredData = data
-      .filter(
-        (d) =>
-          d.name.toLowerCase().includes(keywordInput.value.toLowerCase()) ||
-          d.house.toLowerCase().includes(keywordInput.value.toLowerCase())
-      )
-      .map((result) => result);
-    displayData(getFilteredData);
+    showFilteredData(data);
   });
 });
+
+function showFilteredData(data) {
+  const keywordInput = document.querySelector(".keyword-input");
+  let getFilteredData = data
+    .filter(
+      (d) =>
+        d.name.toLowerCase().includes(keywordInput.value.toLowerCase()) ||
+        d.house.toLowerCase().includes(keywordInput.value.toLowerCase())
+    )
+    .map((result) => result);
+  displayData(getFilteredData);
+}
