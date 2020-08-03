@@ -16,7 +16,7 @@ function displayData(data) {
                             <li>Species : ${d.species}</li>
                             <li>House : ${d.house}</li>
                         </ul>
-                        <a href="#" class="btn btn-info">More Detail</a>
+                        <button class="btn btn-info more-detail-btn" data-toggle="modal" data-target="#moreDetailCard" data-id="${d.name}">More Detail</button>
                     </div>
                 </div>
                </div>`
