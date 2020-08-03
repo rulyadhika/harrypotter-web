@@ -4,8 +4,40 @@
   box-sizing: border-box;
 }
 
+.main-container {
+  padding-bottom: 100px;
+}
+
+.characterCard {
+  animation: fadein 1s ease-in-out;
+}
+
+@keyframes fadein {
+  from {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
 .card-image {
   max-height: 300px;
   object-fit: cover;
   object-position: top;
+}
+
+.card-body {
+  text-transform: capitalize;
+}
+
+.card-body ul li {
+  font-size: 14px;
+  list-style-type: none;
+}
+
+.card-body a {
+  width: 100%;
 }
