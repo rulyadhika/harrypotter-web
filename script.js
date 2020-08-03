@@ -26,4 +26,18 @@ function displayData(data) {
 window.addEventListener("load", async function () {
   const data = await reqData();
   displayData(data);
+
+  // adding filter search feature
+  const inputBtn = document.querySelector(".input-btn");
+  inputBtn.addEventListener("click", function () {
+    const keywordInput = document.querySelector(".keyword-input");
+    let getFilteredData = data
+      .filter(
+        (d) =>
+          d.name.toLowerCase().includes(keywordInput.value.toLowerCase()) ||
+          d.house.toLowerCase().includes(keywordInput.value.toLowerCase())
+      )
+      .map((result) => result);
+    displayData(getFilteredData);
+  });
 });
