@@ -34,7 +34,8 @@
   object-position: top;
 }
 
-.card-body {
+.card-body,
+.body-modal-info {
   text-transform: capitalize;
 }
 
@@ -45,4 +46,9 @@
 
 .card-body button {
   width: 100%;
+}
+
+.modalImage {
+  text-align: center;
+  margin-bottom: 20px;
 }

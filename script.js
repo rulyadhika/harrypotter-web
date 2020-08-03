@@ -61,3 +61,39 @@ function showFilteredData(data) {
     .map((result) => result);
   displayData(getFilteredData);
 }
+
+document.addEventListener("click", async function (e) {
+  if (e.target.classList.contains("more-detail-btn")) {
+    const data = await reqData();
+    displayMoreDetail(data, e.target.dataset.id.toLowerCase());
+  }
+});
+
+function displayMoreDetail(data, dataID) {
+  let getInfoData = data
+    .filter((data) => data.name.toLowerCase().includes(dataID))
+    .map(
+      (data) => `<div class="col-md-4 modalImage">
+    <img src="${data.image}" alt="" class="img-fluid ">
+    </div>
+    <div class="col-md-8">
+    <ul class="list-group">
+        <li class="list-group-item"><b>Name</b>: ${data.name}</li>
+        <li class="list-group-item"><b>Species </b>: ${data.species}</li>
+        <li class="list-group-item"><b>Gender </b>: ${data.gender}</li>
+        <li class="list-group-item"><b>House </b>: ${data.house}</li>
+        <li class="list-group-item"><b>Date Of Birth </b>: ${data.dateOfBirth}</li>
+        <li class="list-group-item"><b>Ancestry </b>: ${data.ancestry}</li>
+        <li class="list-group-item"><b>Wand </b>:<br/> Wood </b>: ${data.wand.wood} | Core = ${data.wand.core} | Length = ${data.wand.length}</li>
+        <li class="list-group-item"><b>Patronus </b>: ${data.patronus}</li>
+        <li class="list-group-item"><b>Hogwarts Student </b>: ${data.hogwartsStudent}</li>
+        <li class="list-group-item"><b>Hogwarts Staff </b>: ${data.hogwartsStaff}</li>
+        <li class="list-group-item"><b>Actor </b>: ${data.actor}</li>
+    </ul>
+    </div>
+    `
+    )
+    .join("");
+  const bodyModalInfo = document.querySelector(".body-modal-info");
+  bodyModalInfo.innerHTML = getInfoData;
+}
